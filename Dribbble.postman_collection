@@ -1,0 +1,69 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Dribbble",
+		"_postman_id": "8c88f0ef-11d7-f616-9ceb-b3a8a42b4467",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get a Shot",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code should be 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{BASE_URL}}/v1/shots/471756",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer be3f0f2486a6ac9f88679c5514bf06a4c41287e8a4600f367e50390bbeb5f704",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get not found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code should be 404\"] = responseCode.code === 404;",
+							"",
+							"tests[\"Body should have message\"] = responseBody.has(\"message\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{BASE_URL}}/v1/shots/abc",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer be3f0f2486a6ac9f88679c5514bf06a4c41287e8a4600f367e50390bbeb5f704",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
